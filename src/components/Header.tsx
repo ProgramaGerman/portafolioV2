@@ -17,8 +17,17 @@ const Header = ({ theme , toggleTheme}) => {
           <a href="#redes-sociales">Redes Sociales</a>
 
         </nav>
-        <button onClick={toggleTheme} className="theme-switcher">
-          <span>{theme === 'light' ? '🌙' : '☀️'}</span>
+        <button
+          onClick={toggleTheme}
+          className="theme-switcher"
+          aria-label={theme === 'light' ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro'}
+          title={theme === 'light' ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro'}
+          aria-pressed={theme !== 'light'}
+        >
+          <i
+            className={theme === 'light' ? 'fa-solid fa-moon' : 'fa-solid fa-sun'}
+            aria-hidden="true"
+          ></i>
         </button>
       </div>
     </header>

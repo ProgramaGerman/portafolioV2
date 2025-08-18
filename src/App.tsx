@@ -4,6 +4,7 @@ import Header from './components/Header';
 import About from './components/About';
 import './App.css';
 import Habilidades from './components/Habilidades';
+import Sociales from './components/Sociales';
 
 function App() {
   const [theme, setTheme] = useState('dark');
@@ -22,7 +23,7 @@ function App() {
       <main>
         <About />
         <Habilidades />
-        {/* El resto de las secciones irán aquí */}
+        <Sociales />
       </main>
     </>
   );

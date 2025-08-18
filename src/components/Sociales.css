@@ -1,0 +1,212 @@
+/* Sociales.css — Tarjetas animadas para redes sociales */
+
+/* Sección contenedora */
+.Sociales-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  gap: 16px;
+}
+
+/* Título con subrayado estilizado como en Habilidades */
+.Sociales-section h2 {
+  text-align: center;
+  font-size: 42px;
+  margin: 0 0 50px 0;
+  font-weight: 700;
+  position: relative;
+  display: inline-block; /* asegura caja para posicionar el ::after */
+  padding-bottom: 15px;
+  background: linear-gradient(135deg, #1E293B, #475569);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: color 1.5s ease;
+  line-height: 1.2;
+}
+
+.Sociales-section h2::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #98CA3F, #65a30d);
+  border-radius: 2px;
+  z-index: 1; /* forzar que la línea quede visible */
+  pointer-events: none;
+}
+
+.dark-mode .Sociales-section h2 {
+  color: #FFFFFF;
+  background: linear-gradient(135deg, #FFFFFF, #E2E8F0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Grid de tarjetas */
+.socials-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.socials-list li {
+  position: relative;
+}
+
+/* Variables por-ítem para colores de marca */
+/* 1: LinkedIn, 2: GitHub, 3: Instagram (ajusta o añade más si sumas nuevas redes) */
+.socials-list li:nth-child(1) { --c1: #00a0dc; --c2: #0077b5; }
+.socials-list li:nth-child(2) { --c1: #6e40c9; --c2: #3b82f6; }
+.socials-list li:nth-child(3) { --c1: #f58529; --c2: #dd2a7b; }
+
+/* Tarjeta (el <a>) */
+.socials-list a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 16px;
+  padding: 20px 18px;
+  isolation: isolate;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,255,255,0.5));
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
+  animation: floatIn 420ms ease both;
+}
+
+/* Apariencia en temas oscuros (opcional si usas prefers-color-scheme) */
+@media (prefers-color-scheme: dark) {
+  .socials-list a {
+    background: linear-gradient(180deg, rgba(24,24,27,0.75), rgba(24,24,27,0.55));
+    color: #f5f5f7;
+    border-color: rgba(255,255,255,0.08);
+    box-shadow: 0 8px 26px rgba(2, 6, 23, 0.35);
+  }
+}
+
+/* Borde/halo animado */
+.socials-list a::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: conic-gradient(from 0turn, var(--c1, #6e40c9), var(--c2, #3b82f6), var(--c1, #6e40c9));
+  filter: blur(10px);
+  opacity: 0.85;
+  z-index: -1;
+  transform: rotate(0turn);
+  animation: spin 6s linear infinite;
+}
+
+/* Capa interna para crear efecto de borde animado sin afectar el contenido */
+.socials-list a::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: calc(16px - 2px);
+  background: inherit; /* conserva el fondo de la tarjeta */
+  z-index: -1;
+}
+
+/* Hover/focus */
+.socials-list a:hover,
+.socials-list a:focus-visible {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.14);
+  border-color: color-mix(in oklab, var(--c2, #3b82f6) 30%, black 20%);
+}
+
+/* Accesibilidad: focus claro */
+.socials-list a:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--c2, #3b82f6) 65%, #ffffff 35%);
+  outline-offset: 3px;
+}
+
+/* Iconos Font Awesome dentro de la tarjeta */
+.socials-list a i {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  font-size: 1.6rem;
+  color: white;
+  background: linear-gradient(135deg, var(--c1, #6e40c9), var(--c2, #3b82f6));
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--c2, #3b82f6) 45%, transparent);
+  flex: 0 0 44px;
+}
+
+/* Texto auxiliar dentro de la tarjeta (si decides añadir spans más tarde) */
+.socials-list a .label {
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.socials-list a .sub {
+  opacity: 0.8;
+  font-size: 0.95rem;
+}
+
+/* Animaciones */
+@keyframes spin { to { transform: rotate(1turn); } }
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estagger simple en la aparición */
+.socials-list li:nth-child(1) a { animation-delay: 40ms; }
+.socials-list li:nth-child(2) a { animation-delay: 120ms; }
+.socials-list li:nth-child(3) a { animation-delay: 200ms; }
+
+/* Respeta preferencias del usuario */
+@media (prefers-reduced-motion: reduce) {
+  .socials-list a,
+  .socials-list a::before {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Responsive: replicar comportamiento de Habilidades */
+@media (max-width: 768px) {
+  .Sociales-section h2 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Sociales-section h2 {
+    font-size: 28px;
+  }
+}
+
+/* Nota: Para personalizar tus perfiles, edita los href en src/components/Sociales.tsx.
+   Ejemplo:
+     https://www.linkedin.com/in/TU_USUARIO
+     https://github.com/TU_USUARIO
+     https://www.instagram.com/TU_USUARIO
+*/

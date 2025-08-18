@@ -1,46 +1,47 @@
-import './habilidades.css';
+import './Habilidades.css';
+
+const skills = [
+  {
+    title: 'Frontend',
+    items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React'],
+  },
+  {
+    title: 'Backend',
+    items: ['Python', 'Java'],
+  },
+  {
+    title: 'Otras',
+    items: ['Git & GitHub', 'Scrum', 'Extreme-Programming'],
+  },
+  {
+    title: 'Desarrollo App Escritorio y App Experimental IA',
+    items: ['Python', 'C/C++', 'Java'],
+  },
+];
 
 const Habilidades = () => {
-    return (
-        <section id="habilidades" className="habilidades-section">
-            <h2>Habilidades</h2>
-            <div className="habilidades-container">
-                <div className="habilidad-card">
-                    <h3>Frontend</h3>
-                    <ul>
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>JavaScript</li>
-                        <li>TypeScript</li>
-                        <li>React</li>
-                    </ul>
-                </div>
-                <div className="habilidad-card">
-                    <h3>Backend</h3>
-                    <ul>
-                        <li>Python</li>
-                        <li>Java</li>
-                    </ul>
-                </div>
-                <div className="habilidad-card">
-                    <h3>Otras</h3>
-                    <ul>
-                        <li>Git & GitHub</li>
-                        <li>Scrum</li>
-                        <li>Extreme-Programming</li>
-                    </ul>
-                </div>
-                <div className='habilidad-card'>
-                    <h3>Desarrollo App Escritorio y App Experimental IA</h3>
-                    <ul>
-                        <li>Python</li>
-                        <li>C/C++</li>
-                        <li>Java</li>
-                    </ul>
-                </div>
+  const duplicated = [...skills, ...skills]; // Duplicamos para scroll infinito suave
+
+  return (
+    <section id="habilidades" className="habilidades-section">
+      <h2>Habilidades</h2>
+
+      <div className="habilidades-carousel" aria-label="Carrusel de habilidades" role="region">
+        <div className="habilidades-track">
+          {duplicated.map((skill, idx) => (
+            <div className="habilidad-card" key={`${skill.title}-${idx}`}>
+              <h3>{skill.title}</h3>
+              <ul>
+                {skill.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
             </div>
-        </section>
-    );
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Habilidades;

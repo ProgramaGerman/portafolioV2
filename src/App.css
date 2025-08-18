@@ -1,0 +1,74 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #FFFFFF; /* Color de fondo principal */
+  color: #1E293B; /* Color de texto principal */
+  transition: background-color 1.5s ease, color 1.5s ease;
+}
+
+main {
+  padding-top: 80px; /* Ajusta este valor si la altura del header cambia */
+}
+
+/* --- Dark Mode Styles --- */
+
+body.dark-mode {
+  background-color: #121822;
+  color: #FFFFFF;
+}
+
+.dark-mode .header {
+  background-color: #1E293B; /* Un poco más claro que el fondo */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.dark-mode .about-section {
+  background-color: #121822;
+}
+
+.dark-mode .about-text h2 {
+  color: #FFFFFF;
+}
+
+.dark-mode .about-text h2::after {
+  background-color: #98CA3F; /* Verde Platzi */
+}
+
+.dark-mode .nav a {
+  color: #FFFFFF;
+}
+
+.dark-mode .nav a:hover {
+  color: #98CA3F;
+}
+
+/* Estilos para el botón de tema en modo claro */
+.theme-switcher {
+  background: linear-gradient(135deg, #98CA3F, #2eaf46) !important;
+  box-shadow: 0 4px 15px rgba(152, 202, 63, 0.3) !important;
+}
+
+/* Estilos para el botón de tema en modo oscuro */
+.dark-mode .theme-switcher {
+  background: linear-gradient(135deg, #4A90E2, #357ABD) !important;
+  box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3) !important;
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+}
+
+.dark-mode .theme-switcher::before {
+  background: linear-gradient(135deg, #357ABD, #4A90E2) !important;
+}
+
+.dark-mode .theme-switcher:hover {
+  box-shadow: 0 6px 20px rgba(74, 144, 226, 0.5) !important;
+}

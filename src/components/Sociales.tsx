@@ -21,7 +21,7 @@ const Sociales = () => {
         </li>
         <li>
           <a
-            href="https://github.com/TU_USUARIO"
+            href="https://github.com/ProgramaGerman"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Visitar GitHub"
@@ -29,13 +29,13 @@ const Sociales = () => {
             <i className="fa-brands fa-github" aria-hidden="true"></i>
             <div>
               <span className="label">GitHub</span>
-              <div className="sub">Completa tu usuario de GitHub</div>
+              <div className="sub">ProgramaGerman</div>
             </div>
           </a>
         </li>
         <li>
           <a
-            href="https://www.instagram.com/TU_USUARIO"
+            href="https://www.instagram.com/amorgermcristo/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Visitar Instagram"
@@ -43,7 +43,7 @@ const Sociales = () => {
             <i className="fa-brands fa-instagram" aria-hidden="true"></i>
             <div>
               <span className="label">Instagram</span>
-              <div className="sub">Completa tu usuario de Instagram</div>
+              <div className="sub">AmorGermCristo (ProgramaGerman)</div>
             </div>
           </a>
         </li>

@@ -1,7 +1,7 @@
 import logo from "../assets/LogoVerde.webp";
 import './Header.css';
 
-const Header = ({ theme , toggleTheme}) => {
+const Header : any = ({ theme , toggleTheme}) => {
   return (
     <header className="header">
       <div className="header-container">

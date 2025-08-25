@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+
 import logo_gif from "../assets/Logo.gif";
 import './About.css';
 

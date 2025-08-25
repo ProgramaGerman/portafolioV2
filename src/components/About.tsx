@@ -1,14 +1,16 @@
 
+import { useState, useEffect } from 'react';
 import logo_gif from "../assets/Logo.gif";
 import './About.css';
 
+// Textos completos de cada párrafo (movido fuera del componente para evitar re-renders)
+const fullTexts = [
+  "Soy un estudiante de Informática de Venezuela, apasionado por la tecnología y la resolución de problemas a través del software. Mi enfoque principal es el desarrollo de software, pero también tengo interés en el soporte técnico y las soluciones de inteligencia artificial.",
+  "Con conocimientos en Python, Java, C/C++, git/github, he desarrollado proyectos básicos y aplicaciones de programación lineal, sistemas expertos, etc... donde aplico conceptos teóricos a soluciones prácticas. También tengo experiencia en desarrollo web con HTML, CSS, JavaScript y TypeScript.",
+  "Actualmente, estoy enfocado en expandir mis habilidades en tecnologías modernas como React, Django, FastAPI y desarrollo de programas de Python con uso de librerías para automatización de tareas y solución con IA, buscando siempre aprender y crecer como desarrollador."
+];
+
 const About = () => {
-  // Textos completos de cada párrafo
-  const fullTexts = [
-    "Soy un estudiante de Informática de Venezuela, apasionado por la tecnología y la resolución de problemas a través del software. Mi enfoque principal es el desarrollo de software, pero también tengo interés en el soporte técnico y las soluciones de inteligencia artificial.",
-    "Con conocimientos en Python, Java, C/C++, git/github, he desarrollado proyectos básicos y aplicaciones de programación lineal, sistemas expertos, etc... donde aplico conceptos teóricos a soluciones prácticas. También tengo experiencia en desarrollo web con HTML, CSS, JavaScript y TypeScript.",
-    "Actualmente, estoy enfocado en expandir mis habilidades en tecnologías modernas como React, Django, FastAPI y desarrollo de programas de Python con uso de librerías para automatización de tareas y solución con IA, buscando siempre aprender y crecer como desarrollador."
-  ];
 
   const [displayedTexts, setDisplayedTexts] = useState(['', '', '']);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
@@ -45,7 +47,7 @@ const About = () => {
         setIsTyping(false);
       }
     }
-  }, [charIndex, currentTextIndex, isTyping, fullTexts]);
+  }, [charIndex, currentTextIndex, isTyping]);
 
   return (
     <section id="sobre-mi" className="about-section">
